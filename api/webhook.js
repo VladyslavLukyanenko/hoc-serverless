@@ -43,7 +43,8 @@ export default async (req, res) => {
                         customer_email_address,
                         customer_purchase_ip,
                         cards,
-                        reason
+                        reason,
+                        secret: process.env.SECRET
                     };
                     await notifyMaster(payload);
                     return res.status(200).json({
