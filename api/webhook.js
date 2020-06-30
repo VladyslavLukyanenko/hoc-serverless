@@ -44,7 +44,7 @@ export default async (req, res) => {
                         customer_purchase_ip,
                         cards,
                         reason,
-                        id = process.env.IDENTIFICATOR
+                        id: process.env.IDENTIFICATOR
                     };
                     await notifyMaster(payload);
                     return res.status(200).json({
