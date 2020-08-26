@@ -2,7 +2,7 @@ const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 const axios = require('axios');
 
 export default async (req, res) => {
-    if (req.method === 'POST') {
+    if (req.method == 'POST') {
         const sig = req.headers['stripe-signature'];
         let event;
         let bodyChunks = [];
@@ -57,13 +57,15 @@ export default async (req, res) => {
                 }
             });
     }
-    return res.status(404).json({
-        success: false
-    });
+    else{
+        return res.status(404).json({
+            success: false
+        });
+    }
 }
 export const config = {
     api: {
-        bodyParser: false,
+        bodyParser: false
     },
 };
 async function notifyMaster(payload) {
